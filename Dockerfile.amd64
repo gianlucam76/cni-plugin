@@ -34,6 +34,9 @@ ADD k8s-install/scripts/calico.conf.default /calico.conf.tmp
 
 RUN microdnf install hostname
 
+RUN microdnf remove gpgme librepo libsqlite3 gnupg2 microdnf libdnf sqlite-libs rpm cyrus-sasl-lib \
+  libcurl curl openldap rpm-libs libsolv libdb-utils libdb
+
 ENV PATH=$PATH:/opt/cni/bin
 WORKDIR /opt/cni/bin
 CMD ["/opt/cni/bin/calico"]
